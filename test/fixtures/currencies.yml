@@ -1,0 +1,15 @@
+aud:
+  country: 'Australia'
+  currency_name: 'AUD'
+  currency_code: 'AUD'
+  amount: 1
+  rate: 14.629
+  valid_for: 2023-11-29
+
+brl:
+  country: Brazil
+  currency_name: real
+  currency_code: BRL
+  amount: 1
+  rate: 4.51
+  valid_for: 2023-11-29

@@ -4,14 +4,14 @@ require 'minitest/mock'
 class CnbApi::FetcherTest < ActiveSupport::TestCase
   fixtures :daily_dumps
 
-  test "execute returns DailyDump ID when daily dump exists" do
+  test "fetch_data returns DailyDump ID when daily dump exists" do
     daily_dump = daily_dumps(:one)
     fetcher = CnbApi::Fetcher.new('/some_path', date: daily_dump.file_name.to_date)
 
-    assert_equal daily_dump.id, fetcher.execute
+    assert_equal daily_dump.id, fetcher.fetch_data
   end
 
-  test "execute creates DailyDump and returns ID when daily dump does not exist" do
+  test "fetch_data creates DailyDump and returns ID when daily dump does not exist" do
     response_body = { data: 'test' }.to_json
     mock_response = Minitest::Mock.new
     mock_response.expect(:is_a?, true, [Object])
@@ -21,21 +21,21 @@ class CnbApi::FetcherTest < ActiveSupport::TestCase
       fetcher = CnbApi::Fetcher.new('/some_path', date: Date.parse('2022-11-29'))
 
       assert_difference 'DailyDump.count', 1 do
-        assert_kind_of Integer, fetcher.execute
+        assert_kind_of Integer, fetcher.fetch_data
       end
     end
 
     mock_response.verify
   end
 
-  test "execute returns nil when API request fails" do
+  test "fetch_data returns nil when API request fails" do
     mock_response = Minitest::Mock.new
     mock_response.expect(:is_a?, true, [Object])
 
     Net::HTTP.stub(:get_response, mock_response) do
       fetcher = CnbApi::Fetcher.new('/some_path', date: Date.parse('2022-11-29'))
 
-      assert_nil fetcher.execute
+      assert_nil fetcher.fetch_data
     end
 
     mock_response.verify

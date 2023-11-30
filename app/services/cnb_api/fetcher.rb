@@ -8,16 +8,18 @@ class CnbApi::Fetcher
     @parameters = parameters
   end
 
-  def execute
+  def fetch_data
     file_name_date = @parameters[:date] || Time.current.to_date
     file_name = file_name_date.strftime('%Y-%m-%d-daily_data.dump')
-    daily_dump = DailyDump.find_by(file_name: file_name)
+    daily_dump = DailyDump.find_by(file_name: file_name);
     return daily_dump.id if daily_dump.present?
   
     res = make_api_request
     raise StandardError.new(res) unless res.is_a?(Net::HTTPSuccess)
   
-    create_daily_dump(file_name, res.body)
+    daily_dump_id = create_daily_dump(file_name, res.body)
+    CnbApi::ProcessorWorker.perform_async(daily_dump_id)
+    return daily_dump_id
   rescue => e
     # Handle the exception
     # TODO: deal with this by alerting and decide how(timing) to retry

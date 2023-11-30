@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_29_194442) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_29_214637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_29_194442) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["currency_code"], name: "index_currencies_on_currency_code", unique: true
+  end
+
+  create_table "daily_dumps", force: :cascade do |t|
+    t.string "file_name"
+    t.jsonb "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["file_name"], name: "index_daily_dumps_on_file_name", unique: true
   end
 
 end

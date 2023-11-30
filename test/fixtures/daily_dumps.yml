@@ -2,8 +2,36 @@
 
 one:
   file_name: '2023-11-29-daily_data.dump'
-  payload: {}
-
+  payload:
+    rates:
+      - rate: 14.629
+        order: 230
+        amount: 1
+        country: "Austrálie"
+        currency: "dolar"
+        validFor: "2023-11-29"
+        currencyCode: "AUD"
+      - rate: 4.51
+        order: 230
+        amount: 1
+        country: "Brazílie"
+        currency: "real"
+        validFor: "2023-11-29"
+        currencyCode: "BRL"
+      - rate: 12.404
+        order: 230
+        amount: 1
+        country: "Bulharsko"
+        currency: "lev"
+        validFor: "2023-11-29"
+        currencyCode: "BGN"
+      - rate: 3.099
+        order: 230
+        amount: 1
+        country: "Čína"
+        currency: "žen-min-pi"
+        validFor: "2023-11-29"
+        currencyCode: "CNY"    
 two:
   file_name: '2023-11-30-daily_data.dump'
   payload: {}

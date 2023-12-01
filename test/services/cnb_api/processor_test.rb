@@ -6,9 +6,7 @@ class CnbApi::ProcessorTest < ActiveSupport::TestCase
   test "execute updates currencies based on daily dump payload" do
     daily_dump = daily_dumps(:one)
     processor = CnbApi::Processor.new
-    new_currencies_count = daily_dump.payload['rates'].count - Currency.count
-
-    assert_difference 'Currency.count', new_currencies_count do
+    assert_difference 'Currency.count', daily_dump.payload['rates'].count do
       processor.execute(daily_dump.id)
     end
 

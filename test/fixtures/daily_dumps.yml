@@ -1,37 +1,37 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  file_name: '2023-11-29-daily_data.dump'
+  file_name: '2000-11-29-daily_data.dump'
   payload:
     rates:
-      - rate: 14.629
+      - rate: 12.629
         order: 230
         amount: 1
-        country: "Austrálie"
-        currency: "dolar"
-        validFor: "2023-11-29"
-        currencyCode: "AUD"
-      - rate: 4.51
-        order: 230
-        amount: 1
-        country: "Brazílie"
-        currency: "real"
-        validFor: "2023-11-29"
-        currencyCode: "BRL"
-      - rate: 12.404
-        order: 230
-        amount: 1
-        country: "Bulharsko"
+        country: "Bulgaria"
         currency: "lev"
-        validFor: "2023-11-29"
+        validFor: "2000-11-29"
         currencyCode: "BGN"
-      - rate: 3.099
+      - rate: 16.51
         order: 230
         amount: 1
-        country: "Čína"
-        currency: "žen-min-pi"
-        validFor: "2023-11-29"
-        currencyCode: "CNY"    
+        country: "Canada"
+        currency: "dollar"
+        validFor: "2000-11-29"
+        currencyCode: "CAD"
+      - rate: 3.404
+        order: 230
+        amount: 1
+        country: "China"
+        currency: "renminbi"
+        validFor: "2000-11-29"
+        currencyCode: "CNY"
+      - rate: 3.254
+        order: 230
+        amount: 1
+        country: "Denmark"
+        currency: "krone"
+        validFor: "2000-11-29"
+        currencyCode: "DKK"    
 two:
-  file_name: '2023-11-30-daily_data.dump'
+  file_name: '2000-11-30-daily_data.dump'
   payload: {}

@@ -1,7 +1,7 @@
 class CnbApi::Processor
   def execute(daily_dump_id)
     daily_dump = DailyDump.find daily_dump_id
-    return unless daily_dump
+    return unless daily_dump && daily_dump.payload['rates'].present?
 
     ex_rates_data = daily_dump.payload['rates'].map do |entry|
       {

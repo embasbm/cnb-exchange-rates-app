@@ -4,7 +4,7 @@ aud:
   currency_code: 'AUD'
   amount: 1
   rate: 14.629
-  valid_for: 2023-11-29
+  valid_for: 2000-11-29
 
 brl:
   country: Brazil
@@ -12,4 +12,20 @@ brl:
   currency_code: BRL
   amount: 1
   rate: 4.51
-  valid_for: 2023-11-29
+  valid_for: 2000-11-29
+
+today:
+  country: Hongkong
+  currency_name: dolar
+  currency_code: HKD
+  amount: 1
+  rate: 2.844
+  valid_for: 2000-11-30
+
+yesterday:
+  country: Indonesie
+  currency_name: rupie
+  currency_code: IDR
+  amount: 1000
+  rate: 1.432
+  valid_for: 2000-11-29

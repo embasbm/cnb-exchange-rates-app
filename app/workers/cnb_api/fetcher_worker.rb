@@ -1,8 +1,9 @@
 class CnbApi::FetcherWorker
   include Sidekiq::Worker
 
-  def perform(path = '/cnbapi/exrates/daily', date = Date.current, lang = 'EN')
-    fetcher = CnbApi::Fetcher.new(path, { date: date, lang: lang })
+  def perform(args)
+    return if Date.current.saturday? || Date.current.sunday?
+    fetcher = CnbApi::Fetcher.new(args)
     fetcher.fetch_data
   end
 end

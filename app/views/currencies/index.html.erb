@@ -5,7 +5,8 @@
     <div>
   <% else %>
     <div class="header"><h3>Valid for <%= @day_of_week %></h3></div>
-    <div class="currency">
+    <div>
+      <%= turbo_stream_from "currencies" %>
       <table>
         <thead>
           <tr>
@@ -16,10 +17,8 @@
             <th>Rate</th>
           </tr>
         </thead>
-        <tbody>
-          <% @currencies.each do |currency| %>
-            <%= render currency %>
-          <% end %>
+        <tbody id="currencies" is="turbo-frame">
+          <%= render @currencies %>
         </tbody>
       </table>
     </div>

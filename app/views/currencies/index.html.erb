@@ -1,10 +1,10 @@
 <main class="container">
   <% if @currencies.blank? %>
     <div class="header">
-      <p>No Exchange rates available for <%= Date.current%></p>
+      <p>No Exchange rates available for <%= @day_of_week %></p>
     <div>
   <% else %>
-    <div class="header"><h3>Valid for <%= Date.current %></h3></div>
+    <div class="header"><h3>Valid for <%= @day_of_week %></h3></div>
     <div class="currency">
       <table>
         <thead>

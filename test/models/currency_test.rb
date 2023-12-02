@@ -4,8 +4,8 @@ class CurrencyTest < ActiveSupport::TestCase
   def setup
     @currency_today = currencies(:today)
     @currency_today.update(valid_for: Date.current)
-    @currency_yesterday = currencies(:yesterday)
-    @currency_yesterday.update(valid_for: Date.current - 1)
+    @currency_prev_day = currencies(:yesterday)
+    @currency_prev_day.update(valid_for: Date.current - 1)
   end
 
   test "should not save duplicate currency codes of AUD code" do
@@ -28,15 +28,15 @@ class CurrencyTest < ActiveSupport::TestCase
   end
 
   test "valid_for_today scope should include currencies created today" do
-    today_currencies = Currency.valid_for_today
+    today_currencies = Currency.valid_for(Date.current)
     
     assert_includes today_currencies, @currency_today
-    refute_includes today_currencies, @currency_yesterday
+    refute_includes today_currencies, @currency_prev_day
   end
 
   test "valid_for_today scope should not include currencies created yesterday" do
-    today_currencies = Currency.valid_for_today
+    today_currencies = Currency.valid_for(Date.current)
 
-    refute_includes today_currencies, @currency_yesterday
+    refute_includes today_currencies, @currency_prev_day
   end
 end

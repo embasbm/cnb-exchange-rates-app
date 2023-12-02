@@ -3,9 +3,9 @@ require 'net/http'
 class CnbApi::Fetcher
   BASE_URL = 'https://api.cnb.cz'
 
-  def initialize(path = '/cnbapi/exrates/daily', parameters={})
-    @path = path
-    @parameters = parameters
+  def initialize(params)
+    @path = params.with_indifferent_access[:path]
+    @parameters = params.with_indifferent_access[:parameters]
   end
 
   def fetch_data
